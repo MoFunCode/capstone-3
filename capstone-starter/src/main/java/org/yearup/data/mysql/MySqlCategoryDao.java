@@ -71,6 +71,7 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
     /**
      * Only administrators (users with the ADMIN role) should be allowed to insert,
      * update or delete a category.
+     *
      * @param category
      * @return
      */
@@ -137,19 +138,34 @@ public class MySqlCategoryDao extends MySqlDaoBase implements CategoryDao {
     }
 
     @Override
-    public void delete(int categoryId)
-    {
-        // delete category
+    public void delete(int categoryId) {
+        String sql = "DELETE FROM categories WHERE category_id = ?";
+
+        try (Connection con = getConnection();
+             PreparedStatement preparedStatement = con.prepareStatement(sql)) {
+            preparedStatement.setInt(1, categoryId);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            System.out.printf("Rows deleted: %d\n", rowsAffected);
+
+            if (rowsAffected > 0) {
+                System.out.println("Category deleted successfully!");
+            } else {
+                System.out.println("No category found with ID: " + categoryId);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error deleting category: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
-    private Category mapRow(ResultSet row) throws SQLException
-    {
+    private Category mapRow(ResultSet row) throws SQLException {
         int categoryId = row.getInt("category_id");
         String name = row.getString("name");
         String description = row.getString("description");
 
-        Category category = new Category()
-        {{
+        Category category = new Category() {{
             setCategoryId(categoryId);
             setName(name);
             setDescription(description);
