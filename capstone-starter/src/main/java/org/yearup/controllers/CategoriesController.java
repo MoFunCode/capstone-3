@@ -17,7 +17,7 @@ import java.util.List;
 // add annotation to allow cross site origin requests
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/api/categories")
 public class CategoriesController
 {
     private CategoryDao categoryDao;
@@ -65,8 +65,11 @@ public class CategoriesController
 
     // add annotation to call this method for a PUT (update) action - the url path must include the categoryId
     // add annotation to ensure that only an ADMIN can call this function
-    public void updateCategory(@PathVariable int id, @RequestBody Category category)
-    {
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK) //Means succesful update,
+    @PreAuthorize("hasRole('ADMIN')")
+    public void updateCategory(@PathVariable int id, @RequestBody Category category) {
+        categoryDao.update(id, category);
         // update the category by id
     }
 
