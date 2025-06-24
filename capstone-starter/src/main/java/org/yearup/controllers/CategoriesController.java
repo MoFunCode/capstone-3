@@ -59,14 +59,7 @@ public class CategoriesController
     @PreAuthorize("hasRole('ADMIN')")
     public Category addCategory(@RequestBody Category category) {
         // insert the category
-
-        if (category.getName() == null || category.getName().trim().isEmpty()) {
-            throw new IllegalArgumentException("You need a category name");
-        }
         Category createdCategory = categoryDao.create(category);
-        if (createdCategory == null) {
-            throw new RuntimeException("Failed to create you're category");
-        }
         return createdCategory;
     }
 
