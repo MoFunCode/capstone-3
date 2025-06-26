@@ -17,7 +17,7 @@ import java.util.List;
 // add annotation to allow cross site origin requests
 
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/categories")
 public class CategoriesController {
     private CategoryDao categoryDao;
     private ProductDao productDao;
