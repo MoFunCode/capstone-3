@@ -2,7 +2,7 @@
 - Java Study Buddy - Code review
 - Javadoc: Helped me understand how to write Java documentation
  https://www.jetbrains.com/help/idea/javadocs.html 
-- HTTP Status Codes: Fun site to learn what different HTTP codes mean, S/O Izel  https://http.cat/ 
+- HTTP Status Codes: Fun site to learn what different HTTP codes mean https://http.cat/ 
 - Workbook 9 (Pages 94–118): Covered REST and how to use Postman
 - Workbook 8(Page 92)
 - Spring Boot Dependency Injection: https://docs.spring.io/spring-framework/reference/core/beans/dependencies/factory-collaborators.html
