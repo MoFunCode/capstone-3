@@ -30,12 +30,12 @@ public class ShoppingCartController {
     private ProductDao productDao;
 
     //user Constructor injection rather than feild injection
-    @Autowired
+/*    @Autowired
     public ShoppingCartController(ShoppingCartDao shoppingCartDao, UserDao userDao, ProductDao productDao) {
         this.shoppingCartDao = shoppingCartDao;
         this.userDao = userDao;
         this.productDao = productDao;
-    }
+    }*/
 
     // each method in this controller requires a Principal object as a parameter
     public ShoppingCart getCart(Principal principal) {
